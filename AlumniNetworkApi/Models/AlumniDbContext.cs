@@ -30,7 +30,7 @@ public partial class AlumniDbContext : DbContext
     {
         modelBuilder.Entity<AlumniGroup>(entity =>
         {
-            entity.HasKey(e => e.GroupId).HasName("PK__AlumniGr__D57795A029A768D7");
+            entity.HasKey(e => e.GroupId).HasName("PK__AlumniGr__D57795A00CAD2856");
 
             entity.ToTable("AlumniGroup");
 
@@ -48,12 +48,12 @@ public partial class AlumniDbContext : DbContext
             entity.HasOne(d => d.CreatedByNavigation).WithMany(p => p.AlumniGroups)
                 .HasForeignKey(d => d.CreatedBy)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__AlumniGro__creat__4BAC3F29");
+                .HasConstraintName("FK__AlumniGro__creat__38996AB5");
         });
 
         modelBuilder.Entity<AlumniUser>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__AlumniUs__B9BE370FB48C207B");
+            entity.HasKey(e => e.UserId).HasName("PK__AlumniUs__B9BE370F66C40819");
 
             entity.ToTable("AlumniUser");
 
@@ -83,14 +83,14 @@ public partial class AlumniDbContext : DbContext
                     r => r.HasOne<AlumniGroup>().WithMany()
                         .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK__GroupMemb__group__5441852A"),
+                        .HasConstraintName("FK__GroupMemb__group__412EB0B6"),
                     l => l.HasOne<AlumniUser>().WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK__GroupMemb__user___534D60F1"),
+                        .HasConstraintName("FK__GroupMemb__user___403A8C7D"),
                     j =>
                     {
-                        j.HasKey("UserId", "GroupId").HasName("PK__GroupMem__A4E94E551A5715B1");
+                        j.HasKey("UserId", "GroupId").HasName("PK__GroupMem__A4E94E55BE83AB32");
                         j.ToTable("GroupMember");
                         j.IndexerProperty<int>("UserId").HasColumnName("user_id");
                         j.IndexerProperty<int>("GroupId").HasColumnName("group_id");
@@ -102,14 +102,14 @@ public partial class AlumniDbContext : DbContext
                     r => r.HasOne<Topic>().WithMany()
                         .HasForeignKey("TopicId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK__TopicMemb__topic__6EF57B66"),
+                        .HasConstraintName("FK__TopicMemb__topic__5BE2A6F2"),
                     l => l.HasOne<AlumniUser>().WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK__TopicMemb__user___6E01572D"),
+                        .HasConstraintName("FK__TopicMemb__user___5AEE82B9"),
                     j =>
                     {
-                        j.HasKey("UserId", "TopicId").HasName("PK__TopicMem__34E39D3103B88F96");
+                        j.HasKey("UserId", "TopicId").HasName("PK__TopicMem__34E39D31EA4E1D2E");
                         j.ToTable("TopicMember");
                         j.IndexerProperty<int>("UserId").HasColumnName("user_id");
                         j.IndexerProperty<int>("TopicId").HasColumnName("topic_id");
@@ -118,7 +118,7 @@ public partial class AlumniDbContext : DbContext
 
         modelBuilder.Entity<Event>(entity =>
         {
-            entity.HasKey(e => e.EventId).HasName("PK__Event__2370F727C1FB703A");
+            entity.HasKey(e => e.EventId).HasName("PK__Event__2370F727C54D1570");
 
             entity.ToTable("Event");
 
@@ -146,7 +146,7 @@ public partial class AlumniDbContext : DbContext
             entity.HasOne(d => d.CreatedByNavigation).WithMany(p => p.Events)
                 .HasForeignKey(d => d.CreatedBy)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Event__created_b__5070F446");
+                .HasConstraintName("FK__Event__created_b__3D5E1FD2");
 
             entity.HasMany(d => d.Groups).WithMany(p => p.Events)
                 .UsingEntity<Dictionary<string, object>>(
@@ -154,14 +154,14 @@ public partial class AlumniDbContext : DbContext
                     r => r.HasOne<AlumniGroup>().WithMany()
                         .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK__EventGrou__group__5BE2A6F2"),
+                        .HasConstraintName("FK__EventGrou__group__48CFD27E"),
                     l => l.HasOne<Event>().WithMany()
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK__EventGrou__event__5AEE82B9"),
+                        .HasConstraintName("FK__EventGrou__event__47DBAE45"),
                     j =>
                     {
-                        j.HasKey("EventId", "GroupId").HasName("PK__EventGro__3E278E7D001DEEA7");
+                        j.HasKey("EventId", "GroupId").HasName("PK__EventGro__3E278E7DC8FE4DDE");
                         j.ToTable("EventGroupInvite");
                         j.IndexerProperty<int>("EventId").HasColumnName("event_id");
                         j.IndexerProperty<int>("GroupId").HasColumnName("group_id");
@@ -173,14 +173,14 @@ public partial class AlumniDbContext : DbContext
                     r => r.HasOne<Topic>().WithMany()
                         .HasForeignKey("TopicId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK__EventTopi__topic__6B24EA82"),
+                        .HasConstraintName("FK__EventTopi__topic__5812160E"),
                     l => l.HasOne<Event>().WithMany()
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK__EventTopi__event__6A30C649"),
+                        .HasConstraintName("FK__EventTopi__event__571DF1D5"),
                     j =>
                     {
-                        j.HasKey("EventId", "TopicId").HasName("PK__EventTop__AE2D5D19BF8C0416");
+                        j.HasKey("EventId", "TopicId").HasName("PK__EventTop__AE2D5D199B41EF44");
                         j.ToTable("EventTopicInvite");
                         j.IndexerProperty<int>("EventId").HasColumnName("event_id");
                         j.IndexerProperty<int>("TopicId").HasColumnName("topic_id");
@@ -192,14 +192,14 @@ public partial class AlumniDbContext : DbContext
                     r => r.HasOne<AlumniUser>().WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK__EventUser__user___5812160E"),
+                        .HasConstraintName("FK__EventUser__user___44FF419A"),
                     l => l.HasOne<Event>().WithMany()
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK__EventUser__event__571DF1D5"),
+                        .HasConstraintName("FK__EventUser__event__440B1D61"),
                     j =>
                     {
-                        j.HasKey("EventId", "UserId").HasName("PK__EventUse__C8EB14572252FAAC");
+                        j.HasKey("EventId", "UserId").HasName("PK__EventUse__C8EB14578960223F");
                         j.ToTable("EventUserInvite");
                         j.IndexerProperty<int>("EventId").HasColumnName("event_id");
                         j.IndexerProperty<int>("UserId").HasColumnName("user_id");
@@ -208,7 +208,7 @@ public partial class AlumniDbContext : DbContext
 
         modelBuilder.Entity<Post>(entity =>
         {
-            entity.HasKey(e => e.PostId).HasName("PK__Post__3ED7876664865E6C");
+            entity.HasKey(e => e.PostId).HasName("PK__Post__3ED7876606323A85");
 
             entity.ToTable("Post");
 
@@ -232,34 +232,33 @@ public partial class AlumniDbContext : DbContext
 
             entity.HasOne(d => d.ReplyParent).WithMany(p => p.InverseReplyParent)
                 .HasForeignKey(d => d.ReplyParentId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Post__reply_pare__6383C8BA");
+                .HasConstraintName("FK__Post__reply_pare__5070F446");
 
             entity.HasOne(d => d.Sender).WithMany(p => p.PostSenders)
                 .HasForeignKey(d => d.SenderId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Post__sender_id__628FA481");
+                .HasConstraintName("FK__Post__sender_id__4F7CD00D");
 
             entity.HasOne(d => d.TargetEventNavigation).WithMany(p => p.Posts)
                 .HasForeignKey(d => d.TargetEvent)
-                .HasConstraintName("FK__Post__target_eve__6754599E");
+                .HasConstraintName("FK__Post__target_eve__5441852A");
 
             entity.HasOne(d => d.TargetGroupNavigation).WithMany(p => p.Posts)
                 .HasForeignKey(d => d.TargetGroup)
-                .HasConstraintName("FK__Post__target_gro__656C112C");
+                .HasConstraintName("FK__Post__target_gro__52593CB8");
 
             entity.HasOne(d => d.TargetTopicNavigation).WithMany(p => p.Posts)
                 .HasForeignKey(d => d.TargetTopic)
-                .HasConstraintName("FK__Post__target_top__66603565");
+                .HasConstraintName("FK__Post__target_top__534D60F1");
 
             entity.HasOne(d => d.TargetUserNavigation).WithMany(p => p.PostTargetUserNavigations)
                 .HasForeignKey(d => d.TargetUser)
-                .HasConstraintName("FK__Post__target_use__6477ECF3");
+                .HasConstraintName("FK__Post__target_use__5165187F");
         });
 
         modelBuilder.Entity<Rsvp>(entity =>
         {
-            entity.HasKey(e => new { e.UserId, e.EventId }).HasName("PK__RSVP__DB89387D413DA912");
+            entity.HasKey(e => new { e.UserId, e.EventId }).HasName("PK__RSVP__DB89387D8F676362");
 
             entity.ToTable("RSVP");
 
@@ -273,17 +272,17 @@ public partial class AlumniDbContext : DbContext
             entity.HasOne(d => d.Event).WithMany(p => p.Rsvps)
                 .HasForeignKey(d => d.EventId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__RSVP__event_id__5FB337D6");
+                .HasConstraintName("FK__RSVP__event_id__4CA06362");
 
             entity.HasOne(d => d.User).WithMany(p => p.Rsvps)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__RSVP__user_id__5EBF139D");
+                .HasConstraintName("FK__RSVP__user_id__4BAC3F29");
         });
 
         modelBuilder.Entity<Topic>(entity =>
         {
-            entity.HasKey(e => e.TopicId).HasName("PK__Topic__D5DAA3E99DC2689F");
+            entity.HasKey(e => e.TopicId).HasName("PK__Topic__D5DAA3E900D3D5A0");
 
             entity.ToTable("Topic");
 

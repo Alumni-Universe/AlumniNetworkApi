@@ -15,7 +15,7 @@ public partial class Post
 
     public int SenderId { get; set; }
 
-    public int ReplyParentId { get; set; }
+    public int? ReplyParentId { get; set; }
 
     public int? TargetUser { get; set; }
 
@@ -27,7 +27,7 @@ public partial class Post
 
     public virtual ICollection<Post> InverseReplyParent { get; } = new List<Post>();
 
-    public virtual Post ReplyParent { get; set; } = null!;
+    public virtual Post? ReplyParent { get; set; }
 
     public virtual AlumniUser Sender { get; set; } = null!;
 

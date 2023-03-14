@@ -52,7 +52,7 @@ namespace AlumniNetworkApi.Migrations
                         .HasColumnName("name");
 
                     b.HasKey("GroupId")
-                        .HasName("PK__AlumniGr__D57795A029A768D7");
+                        .HasName("PK__AlumniGr__D57795A00CAD2856");
 
                     b.HasIndex("CreatedBy");
 
@@ -97,7 +97,7 @@ namespace AlumniNetworkApi.Migrations
                         .HasColumnName("status");
 
                     b.HasKey("UserId")
-                        .HasName("PK__AlumniUs__B9BE370FB48C207B");
+                        .HasName("PK__AlumniUs__B9BE370F66C40819");
 
                     b.ToTable("AlumniUser", (string)null);
                 });
@@ -145,7 +145,7 @@ namespace AlumniNetworkApi.Migrations
                         .HasColumnName("start_time");
 
                     b.HasKey("EventId")
-                        .HasName("PK__Event__2370F727C1FB703A");
+                        .HasName("PK__Event__2370F727C54D1570");
 
                     b.HasIndex("CreatedBy");
 
@@ -176,7 +176,7 @@ namespace AlumniNetworkApi.Migrations
                         .HasColumnType("varchar(50)")
                         .HasColumnName("post_target");
 
-                    b.Property<int>("ReplyParentId")
+                    b.Property<int?>("ReplyParentId")
                         .HasColumnType("int")
                         .HasColumnName("reply_parent_id");
 
@@ -201,7 +201,7 @@ namespace AlumniNetworkApi.Migrations
                         .HasColumnName("target_user");
 
                     b.HasKey("PostId")
-                        .HasName("PK__Post__3ED7876664865E6C");
+                        .HasName("PK__Post__3ED7876606323A85");
 
                     b.HasIndex("ReplyParentId");
 
@@ -237,7 +237,7 @@ namespace AlumniNetworkApi.Migrations
                         .HasColumnName("last_updated");
 
                     b.HasKey("UserId", "EventId")
-                        .HasName("PK__RSVP__DB89387D413DA912");
+                        .HasName("PK__RSVP__DB89387D8F676362");
 
                     b.HasIndex("EventId");
 
@@ -266,7 +266,7 @@ namespace AlumniNetworkApi.Migrations
                         .HasColumnName("name");
 
                     b.HasKey("TopicId")
-                        .HasName("PK__Topic__D5DAA3E99DC2689F");
+                        .HasName("PK__Topic__D5DAA3E900D3D5A0");
 
                     b.ToTable("Topic", (string)null);
                 });
@@ -282,7 +282,7 @@ namespace AlumniNetworkApi.Migrations
                         .HasColumnName("group_id");
 
                     b.HasKey("EventId", "GroupId")
-                        .HasName("PK__EventGro__3E278E7D001DEEA7");
+                        .HasName("PK__EventGro__3E278E7DC8FE4DDE");
 
                     b.HasIndex("GroupId");
 
@@ -300,7 +300,7 @@ namespace AlumniNetworkApi.Migrations
                         .HasColumnName("topic_id");
 
                     b.HasKey("EventId", "TopicId")
-                        .HasName("PK__EventTop__AE2D5D19BF8C0416");
+                        .HasName("PK__EventTop__AE2D5D199B41EF44");
 
                     b.HasIndex("TopicId");
 
@@ -318,7 +318,7 @@ namespace AlumniNetworkApi.Migrations
                         .HasColumnName("user_id");
 
                     b.HasKey("EventId", "UserId")
-                        .HasName("PK__EventUse__C8EB14572252FAAC");
+                        .HasName("PK__EventUse__C8EB14578960223F");
 
                     b.HasIndex("UserId");
 
@@ -336,7 +336,7 @@ namespace AlumniNetworkApi.Migrations
                         .HasColumnName("group_id");
 
                     b.HasKey("UserId", "GroupId")
-                        .HasName("PK__GroupMem__A4E94E551A5715B1");
+                        .HasName("PK__GroupMem__A4E94E55BE83AB32");
 
                     b.HasIndex("GroupId");
 
@@ -354,7 +354,7 @@ namespace AlumniNetworkApi.Migrations
                         .HasColumnName("topic_id");
 
                     b.HasKey("UserId", "TopicId")
-                        .HasName("PK__TopicMem__34E39D3103B88F96");
+                        .HasName("PK__TopicMem__34E39D31EA4E1D2E");
 
                     b.HasIndex("TopicId");
 
@@ -367,7 +367,7 @@ namespace AlumniNetworkApi.Migrations
                         .WithMany("AlumniGroups")
                         .HasForeignKey("CreatedBy")
                         .IsRequired()
-                        .HasConstraintName("FK__AlumniGro__creat__4BAC3F29");
+                        .HasConstraintName("FK__AlumniGro__creat__38996AB5");
 
                     b.Navigation("CreatedByNavigation");
                 });
@@ -378,7 +378,7 @@ namespace AlumniNetworkApi.Migrations
                         .WithMany("Events")
                         .HasForeignKey("CreatedBy")
                         .IsRequired()
-                        .HasConstraintName("FK__Event__created_b__5070F446");
+                        .HasConstraintName("FK__Event__created_b__3D5E1FD2");
 
                     b.Navigation("CreatedByNavigation");
                 });
@@ -388,34 +388,33 @@ namespace AlumniNetworkApi.Migrations
                     b.HasOne("AlumniNetworkApi.Models.Post", "ReplyParent")
                         .WithMany("InverseReplyParent")
                         .HasForeignKey("ReplyParentId")
-                        .IsRequired()
-                        .HasConstraintName("FK__Post__reply_pare__6383C8BA");
+                        .HasConstraintName("FK__Post__reply_pare__5070F446");
 
                     b.HasOne("AlumniNetworkApi.Models.AlumniUser", "Sender")
                         .WithMany("PostSenders")
                         .HasForeignKey("SenderId")
                         .IsRequired()
-                        .HasConstraintName("FK__Post__sender_id__628FA481");
+                        .HasConstraintName("FK__Post__sender_id__4F7CD00D");
 
                     b.HasOne("AlumniNetworkApi.Models.Event", "TargetEventNavigation")
                         .WithMany("Posts")
                         .HasForeignKey("TargetEvent")
-                        .HasConstraintName("FK__Post__target_eve__6754599E");
+                        .HasConstraintName("FK__Post__target_eve__5441852A");
 
                     b.HasOne("AlumniNetworkApi.Models.AlumniGroup", "TargetGroupNavigation")
                         .WithMany("Posts")
                         .HasForeignKey("TargetGroup")
-                        .HasConstraintName("FK__Post__target_gro__656C112C");
+                        .HasConstraintName("FK__Post__target_gro__52593CB8");
 
                     b.HasOne("AlumniNetworkApi.Models.Topic", "TargetTopicNavigation")
                         .WithMany("Posts")
                         .HasForeignKey("TargetTopic")
-                        .HasConstraintName("FK__Post__target_top__66603565");
+                        .HasConstraintName("FK__Post__target_top__534D60F1");
 
                     b.HasOne("AlumniNetworkApi.Models.AlumniUser", "TargetUserNavigation")
                         .WithMany("PostTargetUserNavigations")
                         .HasForeignKey("TargetUser")
-                        .HasConstraintName("FK__Post__target_use__6477ECF3");
+                        .HasConstraintName("FK__Post__target_use__5165187F");
 
                     b.Navigation("ReplyParent");
 
@@ -436,13 +435,13 @@ namespace AlumniNetworkApi.Migrations
                         .WithMany("Rsvps")
                         .HasForeignKey("EventId")
                         .IsRequired()
-                        .HasConstraintName("FK__RSVP__event_id__5FB337D6");
+                        .HasConstraintName("FK__RSVP__event_id__4CA06362");
 
                     b.HasOne("AlumniNetworkApi.Models.AlumniUser", "User")
                         .WithMany("Rsvps")
                         .HasForeignKey("UserId")
                         .IsRequired()
-                        .HasConstraintName("FK__RSVP__user_id__5EBF139D");
+                        .HasConstraintName("FK__RSVP__user_id__4BAC3F29");
 
                     b.Navigation("Event");
 
@@ -455,13 +454,13 @@ namespace AlumniNetworkApi.Migrations
                         .WithMany()
                         .HasForeignKey("EventId")
                         .IsRequired()
-                        .HasConstraintName("FK__EventGrou__event__5AEE82B9");
+                        .HasConstraintName("FK__EventGrou__event__47DBAE45");
 
                     b.HasOne("AlumniNetworkApi.Models.AlumniGroup", null)
                         .WithMany()
                         .HasForeignKey("GroupId")
                         .IsRequired()
-                        .HasConstraintName("FK__EventGrou__group__5BE2A6F2");
+                        .HasConstraintName("FK__EventGrou__group__48CFD27E");
                 });
 
             modelBuilder.Entity("EventTopicInvite", b =>
@@ -470,13 +469,13 @@ namespace AlumniNetworkApi.Migrations
                         .WithMany()
                         .HasForeignKey("EventId")
                         .IsRequired()
-                        .HasConstraintName("FK__EventTopi__event__6A30C649");
+                        .HasConstraintName("FK__EventTopi__event__571DF1D5");
 
                     b.HasOne("AlumniNetworkApi.Models.Topic", null)
                         .WithMany()
                         .HasForeignKey("TopicId")
                         .IsRequired()
-                        .HasConstraintName("FK__EventTopi__topic__6B24EA82");
+                        .HasConstraintName("FK__EventTopi__topic__5812160E");
                 });
 
             modelBuilder.Entity("EventUserInvite", b =>
@@ -485,13 +484,13 @@ namespace AlumniNetworkApi.Migrations
                         .WithMany()
                         .HasForeignKey("EventId")
                         .IsRequired()
-                        .HasConstraintName("FK__EventUser__event__571DF1D5");
+                        .HasConstraintName("FK__EventUser__event__440B1D61");
 
                     b.HasOne("AlumniNetworkApi.Models.AlumniUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .IsRequired()
-                        .HasConstraintName("FK__EventUser__user___5812160E");
+                        .HasConstraintName("FK__EventUser__user___44FF419A");
                 });
 
             modelBuilder.Entity("GroupMember", b =>
@@ -500,13 +499,13 @@ namespace AlumniNetworkApi.Migrations
                         .WithMany()
                         .HasForeignKey("GroupId")
                         .IsRequired()
-                        .HasConstraintName("FK__GroupMemb__group__5441852A");
+                        .HasConstraintName("FK__GroupMemb__group__412EB0B6");
 
                     b.HasOne("AlumniNetworkApi.Models.AlumniUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .IsRequired()
-                        .HasConstraintName("FK__GroupMemb__user___534D60F1");
+                        .HasConstraintName("FK__GroupMemb__user___403A8C7D");
                 });
 
             modelBuilder.Entity("TopicMember", b =>
@@ -515,13 +514,13 @@ namespace AlumniNetworkApi.Migrations
                         .WithMany()
                         .HasForeignKey("TopicId")
                         .IsRequired()
-                        .HasConstraintName("FK__TopicMemb__topic__6EF57B66");
+                        .HasConstraintName("FK__TopicMemb__topic__5BE2A6F2");
 
                     b.HasOne("AlumniNetworkApi.Models.AlumniUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .IsRequired()
-                        .HasConstraintName("FK__TopicMemb__user___6E01572D");
+                        .HasConstraintName("FK__TopicMemb__user___5AEE82B9");
                 });
 
             modelBuilder.Entity("AlumniNetworkApi.Models.AlumniGroup", b =>

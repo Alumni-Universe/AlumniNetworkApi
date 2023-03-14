@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AlumniNetworkApi.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialDb : Migration
+    public partial class InitalDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -25,7 +25,7 @@ namespace AlumniNetworkApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK__AlumniUs__B9BE370FB48C207B", x => x.user_id);
+                    table.PrimaryKey("PK__AlumniUs__B9BE370F66C40819", x => x.user_id);
                 });
 
             migrationBuilder.CreateTable(
@@ -39,7 +39,7 @@ namespace AlumniNetworkApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK__Topic__D5DAA3E99DC2689F", x => x.topic_id);
+                    table.PrimaryKey("PK__Topic__D5DAA3E900D3D5A0", x => x.topic_id);
                 });
 
             migrationBuilder.CreateTable(
@@ -55,9 +55,9 @@ namespace AlumniNetworkApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK__AlumniGr__D57795A029A768D7", x => x.group_id);
+                    table.PrimaryKey("PK__AlumniGr__D57795A00CAD2856", x => x.group_id);
                     table.ForeignKey(
-                        name: "FK__AlumniGro__creat__4BAC3F29",
+                        name: "FK__AlumniGro__creat__38996AB5",
                         column: x => x.created_by,
                         principalTable: "AlumniUser",
                         principalColumn: "user_id");
@@ -79,9 +79,9 @@ namespace AlumniNetworkApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK__Event__2370F727C1FB703A", x => x.event_id);
+                    table.PrimaryKey("PK__Event__2370F727C54D1570", x => x.event_id);
                     table.ForeignKey(
-                        name: "FK__Event__created_b__5070F446",
+                        name: "FK__Event__created_b__3D5E1FD2",
                         column: x => x.created_by,
                         principalTable: "AlumniUser",
                         principalColumn: "user_id");
@@ -96,14 +96,14 @@ namespace AlumniNetworkApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK__TopicMem__34E39D3103B88F96", x => new { x.user_id, x.topic_id });
+                    table.PrimaryKey("PK__TopicMem__34E39D31EA4E1D2E", x => new { x.user_id, x.topic_id });
                     table.ForeignKey(
-                        name: "FK__TopicMemb__topic__6EF57B66",
+                        name: "FK__TopicMemb__topic__5BE2A6F2",
                         column: x => x.topic_id,
                         principalTable: "Topic",
                         principalColumn: "topic_id");
                     table.ForeignKey(
-                        name: "FK__TopicMemb__user___6E01572D",
+                        name: "FK__TopicMemb__user___5AEE82B9",
                         column: x => x.user_id,
                         principalTable: "AlumniUser",
                         principalColumn: "user_id");
@@ -118,14 +118,14 @@ namespace AlumniNetworkApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK__GroupMem__A4E94E551A5715B1", x => new { x.user_id, x.group_id });
+                    table.PrimaryKey("PK__GroupMem__A4E94E55BE83AB32", x => new { x.user_id, x.group_id });
                     table.ForeignKey(
-                        name: "FK__GroupMemb__group__5441852A",
+                        name: "FK__GroupMemb__group__412EB0B6",
                         column: x => x.group_id,
                         principalTable: "AlumniGroup",
                         principalColumn: "group_id");
                     table.ForeignKey(
-                        name: "FK__GroupMemb__user___534D60F1",
+                        name: "FK__GroupMemb__user___403A8C7D",
                         column: x => x.user_id,
                         principalTable: "AlumniUser",
                         principalColumn: "user_id");
@@ -140,14 +140,14 @@ namespace AlumniNetworkApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK__EventGro__3E278E7D001DEEA7", x => new { x.event_id, x.group_id });
+                    table.PrimaryKey("PK__EventGro__3E278E7DC8FE4DDE", x => new { x.event_id, x.group_id });
                     table.ForeignKey(
-                        name: "FK__EventGrou__event__5AEE82B9",
+                        name: "FK__EventGrou__event__47DBAE45",
                         column: x => x.event_id,
                         principalTable: "Event",
                         principalColumn: "event_id");
                     table.ForeignKey(
-                        name: "FK__EventGrou__group__5BE2A6F2",
+                        name: "FK__EventGrou__group__48CFD27E",
                         column: x => x.group_id,
                         principalTable: "AlumniGroup",
                         principalColumn: "group_id");
@@ -162,14 +162,14 @@ namespace AlumniNetworkApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK__EventTop__AE2D5D19BF8C0416", x => new { x.event_id, x.topic_id });
+                    table.PrimaryKey("PK__EventTop__AE2D5D199B41EF44", x => new { x.event_id, x.topic_id });
                     table.ForeignKey(
-                        name: "FK__EventTopi__event__6A30C649",
+                        name: "FK__EventTopi__event__571DF1D5",
                         column: x => x.event_id,
                         principalTable: "Event",
                         principalColumn: "event_id");
                     table.ForeignKey(
-                        name: "FK__EventTopi__topic__6B24EA82",
+                        name: "FK__EventTopi__topic__5812160E",
                         column: x => x.topic_id,
                         principalTable: "Topic",
                         principalColumn: "topic_id");
@@ -184,14 +184,14 @@ namespace AlumniNetworkApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK__EventUse__C8EB14572252FAAC", x => new { x.event_id, x.user_id });
+                    table.PrimaryKey("PK__EventUse__C8EB14578960223F", x => new { x.event_id, x.user_id });
                     table.ForeignKey(
-                        name: "FK__EventUser__event__571DF1D5",
+                        name: "FK__EventUser__event__440B1D61",
                         column: x => x.event_id,
                         principalTable: "Event",
                         principalColumn: "event_id");
                     table.ForeignKey(
-                        name: "FK__EventUser__user___5812160E",
+                        name: "FK__EventUser__user___44FF419A",
                         column: x => x.user_id,
                         principalTable: "AlumniUser",
                         principalColumn: "user_id");
@@ -207,7 +207,7 @@ namespace AlumniNetworkApi.Migrations
                     post_message = table.Column<string>(type: "text", nullable: true),
                     post_target = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
                     sender_id = table.Column<int>(type: "int", nullable: false),
-                    reply_parent_id = table.Column<int>(type: "int", nullable: false),
+                    reply_parent_id = table.Column<int>(type: "int", nullable: true),
                     target_user = table.Column<int>(type: "int", nullable: true),
                     target_group = table.Column<int>(type: "int", nullable: true),
                     target_topic = table.Column<int>(type: "int", nullable: true),
@@ -215,34 +215,34 @@ namespace AlumniNetworkApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK__Post__3ED7876664865E6C", x => x.post_id);
+                    table.PrimaryKey("PK__Post__3ED7876606323A85", x => x.post_id);
                     table.ForeignKey(
-                        name: "FK__Post__reply_pare__6383C8BA",
+                        name: "FK__Post__reply_pare__5070F446",
                         column: x => x.reply_parent_id,
                         principalTable: "Post",
                         principalColumn: "post_id");
                     table.ForeignKey(
-                        name: "FK__Post__sender_id__628FA481",
+                        name: "FK__Post__sender_id__4F7CD00D",
                         column: x => x.sender_id,
                         principalTable: "AlumniUser",
                         principalColumn: "user_id");
                     table.ForeignKey(
-                        name: "FK__Post__target_eve__6754599E",
+                        name: "FK__Post__target_eve__5441852A",
                         column: x => x.target_event,
                         principalTable: "Event",
                         principalColumn: "event_id");
                     table.ForeignKey(
-                        name: "FK__Post__target_gro__656C112C",
+                        name: "FK__Post__target_gro__52593CB8",
                         column: x => x.target_group,
                         principalTable: "AlumniGroup",
                         principalColumn: "group_id");
                     table.ForeignKey(
-                        name: "FK__Post__target_top__66603565",
+                        name: "FK__Post__target_top__534D60F1",
                         column: x => x.target_topic,
                         principalTable: "Topic",
                         principalColumn: "topic_id");
                     table.ForeignKey(
-                        name: "FK__Post__target_use__6477ECF3",
+                        name: "FK__Post__target_use__5165187F",
                         column: x => x.target_user,
                         principalTable: "AlumniUser",
                         principalColumn: "user_id");
@@ -259,14 +259,14 @@ namespace AlumniNetworkApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK__RSVP__DB89387D413DA912", x => new { x.user_id, x.event_id });
+                    table.PrimaryKey("PK__RSVP__DB89387D8F676362", x => new { x.user_id, x.event_id });
                     table.ForeignKey(
-                        name: "FK__RSVP__event_id__5FB337D6",
+                        name: "FK__RSVP__event_id__4CA06362",
                         column: x => x.event_id,
                         principalTable: "Event",
                         principalColumn: "event_id");
                     table.ForeignKey(
-                        name: "FK__RSVP__user_id__5EBF139D",
+                        name: "FK__RSVP__user_id__4BAC3F29",
                         column: x => x.user_id,
                         principalTable: "AlumniUser",
                         principalColumn: "user_id");
