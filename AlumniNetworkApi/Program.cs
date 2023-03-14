@@ -3,6 +3,7 @@ using AlumniNetworkApi.Services.AlumniGroups;
 using AlumniNetworkApi.Services.AlumniUsers;
 using AlumniNetworkApi.Services.Events;
 using AlumniNetworkApi.Services.Posts;
+using AlumniNetworkApi.Services.Topics;
 using Microsoft.EntityFrameworkCore;
 
 namespace AlumniNetworkApi
@@ -24,6 +25,7 @@ namespace AlumniNetworkApi
             builder.Services.AddScoped<IAlumniUserService, AlumniUserService>();
             builder.Services.AddScoped<IEventService, EventService>();
             builder.Services.AddScoped<IPostService, PostService>();
+            builder.Services.AddScoped<ITopicService, TopicService>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
