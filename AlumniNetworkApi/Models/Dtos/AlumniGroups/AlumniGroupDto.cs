@@ -1,4 +1,7 @@
-﻿namespace AlumniNetworkApi.Models.Dtos.AlumniGroups
+﻿using AlumniNetworkApi.Models.Dtos.Posts;
+using AlumniNetworkApi.Models.Dtos.Events;
+using AlumniNetworkApi.Models.Dtos.AlumniUsers;
+namespace AlumniNetworkApi.Models.Dtos.AlumniGroups
 {
     public class AlumniGroupDto
     {
@@ -11,8 +14,8 @@
         public bool IsPrivate { get; set; }
 
         public int CreatedBy { get; set; }
-        public List<int>? Posts { get; set; }
-        public List<int>? Events { get; set; }
-        public List<int>? Users { get; set; }
+        public List<PostInfoDto>? Posts { get; set; }
+        public List<EventInfoDto>? Events { get; set; }
+        public List<AlumniUserInfoDto>? Users { get; set; }
     }
 }
