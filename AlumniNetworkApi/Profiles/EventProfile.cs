@@ -1,5 +1,10 @@
 ﻿using AlumniNetworkApi.Models;
+using AlumniNetworkApi.Models.Dtos.AlumniGroups;
+using AlumniNetworkApi.Models.Dtos.AlumniUsers;
 using AlumniNetworkApi.Models.Dtos.Events;
+using AlumniNetworkApi.Models.Dtos.Posts;
+using AlumniNetworkApi.Models.Dtos.Rsvps;
+using AlumniNetworkApi.Models.Dtos.Topics;
 using AutoMapper;
 
 namespace AlumniNetworkApi.Profiles
@@ -8,17 +13,38 @@ namespace AlumniNetworkApi.Profiles
     {
         public EventProfile()
         {
+            CreateMap<Post, PostInfoDto>()
+                .ForMember(dest => dest.PostId, opt => opt.MapFrom(src => src.PostId))
+                .ForMember(dest => dest.PostTarget, opt => opt.MapFrom(src => src.PostTarget));
+
+            CreateMap<Rsvp, RsvpInfoDto>()
+                .ForMember(dest => dest.LastUpdated, opt => opt.MapFrom(src => src.LastUpdated))
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
+                .ForMember(dest => dest.EventId, opt => opt.MapFrom(src => src.EventId));
+
+            CreateMap<AlumniGroup, AlumniGroupInfoDto>()
+                .ForMember(dest => dest.GroupId, opt => opt.MapFrom(src => src.GroupId))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+
+            CreateMap<Topic, TopicInfoDto>()
+                .ForMember(dest => dest.TopicId, opt => opt.MapFrom(src => src.TopicId))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+
+            CreateMap<AlumniUser, AlumniUserInfoDto>()
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+
             CreateMap<Event, EventDto>()
                 .ForMember(dto => dto.Posts, opt => opt
-                .MapFrom(p => p.Posts.Select(p => p.PostId).ToList()))
+                .MapFrom(src => src.Posts))
                 .ForMember(dto => dto.Rsvps, opt => opt
-                .MapFrom(r => r.Rsvps.Select(r => r.UserId).ToList()))
+                .MapFrom(src => src.Rsvps))
                 .ForMember(dto => dto.Groups, opt => opt
-                .MapFrom(g => g.Groups.Select(g => g.GroupId).ToList()))
+                .MapFrom(src => src.Groups))
                 .ForMember(dto => dto.Topics, opt => opt
-                .MapFrom(t => t.Topics.Select(t => t.TopicId).ToList()))
+                .MapFrom(src => src.Topics))
                 .ForMember(dto => dto.Users, opt => opt
-                .MapFrom(u => u.Users.Select(u => u.UserId).ToList()));
+                .MapFrom(src => src.Users));
             CreateMap<EventPostDto, Event>();
             CreateMap<EventPutDto, Event>();
             CreateMap<EventInfoDto, Event>();

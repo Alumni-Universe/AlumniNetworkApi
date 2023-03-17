@@ -1,4 +1,10 @@
-﻿namespace AlumniNetworkApi.Models.Dtos.Events
+﻿using AlumniNetworkApi.Models.Dtos.AlumniGroups;
+using AlumniNetworkApi.Models.Dtos.AlumniUsers;
+using AlumniNetworkApi.Models.Dtos.Posts;
+using AlumniNetworkApi.Models.Dtos.Rsvps;
+using AlumniNetworkApi.Models.Dtos.Topics;
+
+namespace AlumniNetworkApi.Models.Dtos.Events
 {
     public class EventDto
     {
@@ -17,10 +23,10 @@
         public DateTime EndTime { get; set; }
 
         public int CreatedBy { get; set; }
-        public List<int>? Posts { get; set; }
-        public List<int>? Rsvps { get; set; }
-        public List<int>? Groups { get; set; }
-        public List<int>? Topics { get; set; }
-        public List<int>? Users { get; set; }
+        public List<PostInfoDto>? Posts { get; set; }
+        public List<RsvpInfoDto>? Rsvps { get; set; }
+        public List<AlumniGroupInfoDto>? Groups { get; set; }
+        public List<TopicInfoDto>? Topics { get; set; }
+        public List<AlumniUserInfoDto>? Users { get; set; }
     }
 }

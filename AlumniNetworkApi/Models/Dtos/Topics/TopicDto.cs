@@ -1,4 +1,8 @@
-﻿namespace AlumniNetworkApi.Models.Dtos.Topics
+﻿using AlumniNetworkApi.Models.Dtos.AlumniUsers;
+using AlumniNetworkApi.Models.Dtos.Events;
+using AlumniNetworkApi.Models.Dtos.Posts;
+
+namespace AlumniNetworkApi.Models.Dtos.Topics
 {
     public class TopicDto
     {
@@ -8,8 +12,8 @@
 
         public string Description { get; set; } = null!;
 
-        public List<int>? Posts { get; set; }
-        public List<int>? Events { get; set; }
-        public List<int>? Users { get; set; }
+        public List<PostInfoDto>? Posts { get; set; }
+        public List<EventInfoDto>? Events { get; set; }
+        public List<AlumniUserInfoDto>? Users { get; set; }
     }
 }
