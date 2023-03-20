@@ -28,6 +28,17 @@ namespace AlumniNetworkApi
             builder.Services.AddScoped<ITopicService, TopicService>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+            builder.Services.AddCors(
+                options => {
+                    options.AddPolicy("AllowAny", 
+                        builder => builder
+                            .AllowAnyOrigin()
+                            .AllowAnyHeader()
+                            .AllowAnyMethod()
+                    );
+                }
+            );
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -41,10 +52,19 @@ namespace AlumniNetworkApi
                 app.UseSwaggerUI();
             }
 
+            // Todo: Legge til DefaultFilesOption, UseDefaultFiles, UseStaticFiles
+
+            DefaultFilesOptions newOptions = new DefaultFilesOptions();
+            newOptions.DefaultFileNames.Append("index.html");
+            app.UseDefaultFiles(newOptions);
+
+            app.UseStaticFiles();
+
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+            app.UseCors("AllowAny");
 
+            app.UseAuthorization();
 
             app.MapControllers();
 
