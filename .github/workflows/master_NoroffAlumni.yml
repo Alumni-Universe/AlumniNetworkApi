@@ -31,7 +31,7 @@ jobs:
       with:
         push: true
         tags: alumniregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_d769f94c685140079a57aa4993ba50e2 }}/alumniapi:${{ github.sha }}
-        file: .AlumniNetworkApi/AlumniNetworkApi/Dockerfile 
+        file: ./AlumniNetworkApi/Dockerfile 
 
   deploy:
     runs-on: ubuntu-latest
