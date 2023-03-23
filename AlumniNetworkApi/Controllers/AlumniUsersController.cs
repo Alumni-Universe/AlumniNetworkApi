@@ -38,7 +38,7 @@ namespace AlumniNetworkApi.Controllers
 
         // GET: api/AlumniUsers/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<AlumniUserDto>> GetAlumniUser(int id)
+        public async Task<ActionResult<AlumniUserDto>> GetAlumniUser(string id)
         {
             var alumniUser = _mapper.Map<AlumniUserDto>(await _alumniUserService.GetByIdAsync(id));
 
@@ -53,7 +53,7 @@ namespace AlumniNetworkApi.Controllers
         // PUT: api/AlumniUsers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAlumniUser(int id, AlumniUserPutDto dto)
+        public async Task<IActionResult> PutAlumniUser(string id, AlumniUserPutDto dto)
         {
             if (id != dto.UserId)
             {
@@ -84,7 +84,7 @@ namespace AlumniNetworkApi.Controllers
 
         // DELETE: api/AlumniUsers/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAlumniUser(int id)
+        public async Task<IActionResult> DeleteAlumniUser(string id)
         {
             var alumniUser = await _alumniUserService.GetByIdAsync(id);
             if (alumniUser == null)

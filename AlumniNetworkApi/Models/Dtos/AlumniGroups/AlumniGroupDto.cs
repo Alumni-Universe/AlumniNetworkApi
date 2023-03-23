@@ -13,7 +13,7 @@ namespace AlumniNetworkApi.Models.Dtos.AlumniGroups
 
         public bool IsPrivate { get; set; }
 
-        public int CreatedBy { get; set; }
+        public string CreatedBy { get; set; }
         public List<PostInfoDto>? Posts { get; set; }
         public List<EventInfoDto>? Events { get; set; }
         public List<AlumniUserInfoDto>? Users { get; set; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AlumniNetworkApi.Models;
+using System;
 using System.Collections.Generic;
 
 namespace AlumniNetworkApi.Models;
@@ -19,7 +20,7 @@ public partial class Event
 
     public DateTime EndTime { get; set; }
 
-    public int CreatedBy { get; set; }
+    public string CreatedBy { get; set; } = null!;
 
     public virtual AlumniUser CreatedByNavigation { get; set; } = null!;
 

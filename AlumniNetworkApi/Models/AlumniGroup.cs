@@ -13,7 +13,7 @@ public partial class AlumniGroup
 
     public bool IsPrivate { get; set; }
 
-    public int CreatedBy { get; set; }
+    public string CreatedBy { get; set; } = null!;
 
     public virtual AlumniUser CreatedByNavigation { get; set; } = null!;
 

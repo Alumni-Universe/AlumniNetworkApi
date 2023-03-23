@@ -22,7 +22,7 @@ namespace AlumniNetworkApi.Models.Dtos.Events
 
         public DateTime EndTime { get; set; }
 
-        public int CreatedBy { get; set; }
+        public string CreatedBy { get; set; }
         public List<PostInfoDto>? Posts { get; set; }
         public List<RsvpInfoDto>? Rsvps { get; set; }
         public List<AlumniGroupInfoDto>? Groups { get; set; }

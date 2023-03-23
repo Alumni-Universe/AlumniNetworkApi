@@ -16,7 +16,7 @@ namespace AlumniNetworkApi.Services.AlumniUsers
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteByIdAsync(int id)
+        public async Task DeleteByIdAsync(string id)
         {
             var alumniUser = await _context.AlumniUsers.FindAsync(id);
             if (alumniUser == null)
@@ -43,7 +43,7 @@ namespace AlumniNetworkApi.Services.AlumniUsers
                 .ToListAsync();
         }
 
-        public async Task<AlumniUser> GetByIdAsync(int id)
+        public async Task<AlumniUser> GetByIdAsync(string id)
         {
             return await _context.AlumniUsers
                 .Where(c => c.UserId == id)
@@ -59,7 +59,7 @@ namespace AlumniNetworkApi.Services.AlumniUsers
                 .FirstAsync();
         }
 
-        public async Task<IEnumerable<AlumniGroup>> GetAlumniGroups(int id)
+        public async Task<IEnumerable<AlumniGroup>> GetAlumniGroups(string id)
         {
             return (await _context.AlumniUsers
                 .Where(c => c.UserId == id)
@@ -67,7 +67,7 @@ namespace AlumniNetworkApi.Services.AlumniUsers
                 .FirstAsync()).AlumniGroups;
         }
 
-        public async Task<IEnumerable<Event>> GetEvents(int id)
+        public async Task<IEnumerable<Event>> GetEvents(string id)
         {
             return (await _context.AlumniUsers
                 .Where(c => c.UserId == id)
@@ -75,7 +75,7 @@ namespace AlumniNetworkApi.Services.AlumniUsers
                 .FirstAsync()).Events;
         }
 
-        public async Task<IEnumerable<Event>> GetEventsNavigation(int id)
+        public async Task<IEnumerable<Event>> GetEventsNavigation(string id)
         {
             return (await _context.AlumniUsers
                 .Where(c => c.UserId == id)
@@ -83,7 +83,7 @@ namespace AlumniNetworkApi.Services.AlumniUsers
                 .FirstAsync()).EventsNavigation;
         }
 
-        public async Task<IEnumerable<AlumniGroup>> GetGroups(int id)
+        public async Task<IEnumerable<AlumniGroup>> GetGroups(string id)
         {
             return (await _context.AlumniUsers
                 .Where(c => c.UserId == id)
@@ -91,7 +91,7 @@ namespace AlumniNetworkApi.Services.AlumniUsers
                 .FirstAsync()).Groups;
         }
 
-        public async Task<IEnumerable<Post>> GetPostSenders(int id)
+        public async Task<IEnumerable<Post>> GetPostSenders(string id)
         {
             return (await _context.AlumniUsers
                 .Where(c => c.UserId == id)
@@ -99,7 +99,7 @@ namespace AlumniNetworkApi.Services.AlumniUsers
                 .FirstAsync()).PostSenders;
         }
 
-        public async Task<IEnumerable<Post>> GetPostTargetUserNavigations(int id)
+        public async Task<IEnumerable<Post>> GetPostTargetUserNavigations(string id)
         {
             return (await _context.AlumniUsers
                 .Where(c => c.UserId == id)
@@ -107,7 +107,7 @@ namespace AlumniNetworkApi.Services.AlumniUsers
                 .FirstAsync()).PostTargetUserNavigations;
         }
 
-        public async Task<IEnumerable<Rsvp>> GetRsvps(int id)
+        public async Task<IEnumerable<Rsvp>> GetRsvps(string id)
         {
             return (await _context.AlumniUsers
                 .Where(c => c.UserId == id)
@@ -115,7 +115,7 @@ namespace AlumniNetworkApi.Services.AlumniUsers
                 .FirstAsync()).Rsvps;
         }
 
-        public async Task<IEnumerable<Topic>> GetTopics(int id)
+        public async Task<IEnumerable<Topic>> GetTopics(string id)
         {
             return (await _context.AlumniUsers
                 .Where(c => c.UserId == id)
