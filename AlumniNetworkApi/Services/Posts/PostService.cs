@@ -32,6 +32,11 @@ namespace AlumniNetworkApi.Services.Posts
         {
             return await _context.Posts
                 .Include(p => p.InverseReplyParent)
+                .Include(p => p.Sender)
+                .Include(p => p.TargetEventNavigation)
+                .Include(p => p.TargetGroupNavigation)
+                .Include(p => p.TargetTopicNavigation)
+                .Include(p => p.TargetUserNavigation)
                 .ToListAsync();
         }
 
@@ -40,6 +45,11 @@ namespace AlumniNetworkApi.Services.Posts
             return await _context.Posts
                 .Where(e => e.PostId == id)
                 .Include(p => p.InverseReplyParent)
+                .Include(p => p.Sender)
+                .Include(p => p.TargetEventNavigation)
+                .Include(p => p.TargetGroupNavigation)
+                .Include(p => p.TargetTopicNavigation)
+                .Include(p => p.TargetUserNavigation)
                 .FirstAsync();
         }
 
