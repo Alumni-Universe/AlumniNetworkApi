@@ -9,11 +9,13 @@ using AlumniNetworkApi.Models;
 using AlumniNetworkApi.Services.Events;
 using AutoMapper;
 using AlumniNetworkApi.Models.Dtos.Events;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AlumniNetworkApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class EventsController : ControllerBase
     {
         private readonly IEventService _eventService;

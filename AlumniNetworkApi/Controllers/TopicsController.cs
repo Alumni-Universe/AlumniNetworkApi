@@ -9,11 +9,13 @@ using AlumniNetworkApi.Models;
 using AutoMapper;
 using AlumniNetworkApi.Services.Topics;
 using AlumniNetworkApi.Models.Dtos.Topics;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AlumniNetworkApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize] 
     public class TopicsController : ControllerBase
     {
         private readonly ITopicService _topicService;

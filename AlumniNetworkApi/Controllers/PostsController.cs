@@ -9,11 +9,13 @@ using AlumniNetworkApi.Models;
 using AlumniNetworkApi.Services.Posts;
 using AutoMapper;
 using AlumniNetworkApi.Models.Dtos.Posts;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AlumniNetworkApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PostsController : ControllerBase
     {
         private readonly IPostService _postService;

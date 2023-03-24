@@ -9,11 +9,13 @@ using AlumniNetworkApi.Models;
 using AlumniNetworkApi.Services.AlumniGroups;
 using AutoMapper;
 using AlumniNetworkApi.Models.Dtos.AlumniGroups;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AlumniNetworkAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AlumniGroupsController : ControllerBase
     {
         private readonly IAlumniGroupService _alumniGroupService;

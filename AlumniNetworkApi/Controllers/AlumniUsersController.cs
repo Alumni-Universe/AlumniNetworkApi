@@ -9,11 +9,13 @@ using AlumniNetworkApi.Models;
 using AlumniNetworkApi.Models.Dtos.AlumniUsers;
 using AlumniNetworkApi.Services.AlumniUsers;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AlumniNetworkApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AlumniUsersController : ControllerBase
     {
         private readonly IAlumniUserService _alumniUserService;
