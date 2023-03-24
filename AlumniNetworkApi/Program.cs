@@ -4,6 +4,7 @@ using AlumniNetworkApi.Services.AlumniUsers;
 using AlumniNetworkApi.Services.Events;
 using AlumniNetworkApi.Services.Posts;
 using AlumniNetworkApi.Services.Topics;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 
 namespace AlumniNetworkApi
@@ -27,6 +28,16 @@ namespace AlumniNetworkApi
             builder.Services.AddScoped<IPostService, PostService>();
             builder.Services.AddScoped<ITopicService, TopicService>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+    .AddJwtBearer(options =>
+    {
+        options.Authority = "https://keyclokalumni.azurewebsites.net/auth/realms/alumni"; // Replace with your authentication server URL
+        options.Audience = "react-auth"; // Replace with your API identifier
+    });
 
             builder.Services.AddCors(
                 options => {
