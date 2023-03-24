@@ -61,9 +61,9 @@ namespace AlumniNetworkApi
 
             app.UseStaticFiles();
 
-            app.UseHttpsRedirection();
-
             app.UseCors("AllowAny");
+
+            app.UseHttpsRedirection();
 
             app.UseAuthorization();
 
