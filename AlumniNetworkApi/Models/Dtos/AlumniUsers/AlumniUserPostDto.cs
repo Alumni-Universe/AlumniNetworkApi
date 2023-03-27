@@ -2,6 +2,8 @@
 {
     public class AlumniUserPostDto
     {
+        public string UserId { get; set; }
+
         public string Name { get; set; } = null!;
 
         public string Picture { get; set; } = null!;
