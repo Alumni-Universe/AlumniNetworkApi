@@ -32,7 +32,7 @@ builder.Services.AddAuthentication(options =>
 .AddJwtBearer(options =>
 {
     options.Authority = "https://keyclokalumni.azurewebsites.net/auth/realms/alumni"; 
-    options.Audience = "react-auth";
+    options.Audience = ".NET-auth";
 });
 
 builder.Services.AddCors(options =>
