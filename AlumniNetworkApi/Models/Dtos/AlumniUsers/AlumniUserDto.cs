@@ -20,11 +20,11 @@ namespace AlumniNetworkApi.Models.Dtos.AlumniUsers
         public string? FunFact { get; set; }
         public List<AlumniGroupInfoDto>? AlumniGroups { get; set; }
         public List<EventInfoDto>? Events { get; set; }
-        public List<int>? PostSenders { get; set; }
-        public List<int>? PostTargetUserNavigations { get; set; }
+        public List<string>? PostSenders { get; set; }
+        public List<string>? PostTargetUserNavigations { get; set; }
         public List<RsvpInfoDto>? Rsvps { get; set; }
-        public List<int>? EventsNavigation { get; set; }
-        public List<int>? Groups { get; set; }
+        public List<string>? EventsNavigation { get; set; }
+        public List<string>? Groups { get; set; }
         public List<TopicInfoDto>? Topics { get; set; }
     }
 }
