@@ -11,8 +11,6 @@ namespace AlumniNetworkApi.Models.Dtos.Posts
 
         public DateTime LastUpdated { get; set; }
 
-        public string PostTitle { get; set; }
-
         public string? PostMessage { get; set; }
 
         public string PostTarget { get; set; } = null!;
