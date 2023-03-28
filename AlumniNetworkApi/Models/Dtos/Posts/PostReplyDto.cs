@@ -5,7 +5,7 @@ using AlumniNetworkApi.Models.Dtos.Topics;
 
 namespace AlumniNetworkApi.Models.Dtos.Posts
 {
-    public class PostDto
+    public class PostReplyDto
     {
         public int PostId { get; set; }
 
@@ -29,11 +29,6 @@ namespace AlumniNetworkApi.Models.Dtos.Posts
 
         public int? TargetEvent { get; set; }
 
-        public List<PostReplyDto>? InverseReplyParent { get; set; }
         public virtual AlumniUserInfoDto Sender { get; set; } = null!;
-        public virtual EventInfoDto? TargetEventNavigation { get; set; }
-        public virtual AlumniGroupInfoDto? TargetGroupNavigation { get; set; }
-        public virtual TopicInfoDto? TargetTopicNavigation { get; set; }
-        public virtual AlumniUserInfoDto? TargetUserNavigation { get; set; }
     }
 }

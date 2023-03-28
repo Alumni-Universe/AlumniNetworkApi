@@ -30,7 +30,7 @@ namespace AlumniNetworkApi.Profiles
                 
             CreateMap<Post, PostDto>()
                 .ForMember(dto => dto.InverseReplyParent, opt => opt
-                .MapFrom(p => p.InverseReplyParent.Select(p => p.ReplyParentId).ToList()))
+                .MapFrom(src => src.InverseReplyParent))
                 .ForMember(dto => dto.Sender, opt => opt
                 .MapFrom(src => src.Sender))
                 .ForMember(dto => dto.TargetEventNavigation, opt => opt
