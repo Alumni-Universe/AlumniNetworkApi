@@ -15,7 +15,7 @@ namespace AlumniNetworkAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class AlumniGroupsController : ControllerBase
     {
         private readonly IAlumniGroupService _alumniGroupService;
