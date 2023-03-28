@@ -27,10 +27,15 @@ namespace AlumniNetworkApi.Profiles
             CreateMap<Topic, TopicInfoDto>()
                 .ForMember(dest => dest.TopicId, opt => opt.MapFrom(src => src.TopicId))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
-                
+
+            CreateMap<Post, PostReplyDto>()
+                .ForMember(dest => dest.PostId, opt => opt.MapFrom(src => src.PostId))
+                .ForMember(dest => dest.PostTarget, opt => opt.MapFrom(src => src.PostTarget))
+                .ForMember(dest => dest.Sender, opt => opt.MapFrom(src => src.Sender));
+
             CreateMap<Post, PostDto>()
                 .ForMember(dto => dto.InverseReplyParent, opt => opt
-                .MapFrom(p => p.InverseReplyParent.Select(p => p.ReplyParentId).ToList()))
+                .MapFrom(src => src.InverseReplyParent))
                 .ForMember(dto => dto.Sender, opt => opt
                 .MapFrom(src => src.Sender))
                 .ForMember(dto => dto.TargetEventNavigation, opt => opt
