@@ -15,7 +15,8 @@ namespace AlumniNetworkApi.Profiles
         {
             CreateMap<AlumniGroup, AlumniGroupInfoDto>()
                 .ForMember(dest => dest.GroupId, opt => opt.MapFrom(src => src.GroupId))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description));
 
             CreateMap<Event, EventInfoDto>()
                 .ForMember(dest => dest.EventId, opt => opt.MapFrom(src => src.EventId))
