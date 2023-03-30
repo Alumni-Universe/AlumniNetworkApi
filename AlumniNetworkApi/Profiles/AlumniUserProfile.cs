@@ -32,13 +32,18 @@ namespace AlumniNetworkApi.Profiles
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description));
 
+            CreateMap<Post, PostInfoDto>()
+                .ForMember(dest => dest.PostId, opt => opt.MapFrom(src => src.PostId))
+                .ForMember(dest => dest.PostTitle, opt => opt.MapFrom(src => src.PostTitle))
+                .ForMember(dest => dest.PostMessage, opt => opt.MapFrom(src => src.PostMessage));
+
             CreateMap<AlumniUser, AlumniUserDto>()
                 .ForMember(dto => dto.AlumniGroups, opt => opt
                 .MapFrom(src => src.AlumniGroups))
                 .ForMember(dto => dto.Events, opt => opt
                 .MapFrom(src => src.Events))
                 .ForMember(dto => dto.PostSenders, opt => opt
-                .MapFrom(p => p.PostSenders.Select(p => p.SenderId).ToList()))
+                .MapFrom(src => src.PostSenders))
                 .ForMember(dto => dto.PostTargetUserNavigations, opt => opt
                 .MapFrom(p => p.PostTargetUserNavigations.Select(p => p.TargetUser).ToList()))
                 .ForMember(dto => dto.Rsvps, opt => opt

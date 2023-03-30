@@ -1,5 +1,6 @@
 ﻿using AlumniNetworkApi.Models.Dtos.AlumniGroups;
 using AlumniNetworkApi.Models.Dtos.Events;
+using AlumniNetworkApi.Models.Dtos.Posts;
 using AlumniNetworkApi.Models.Dtos.Rsvps;
 using AlumniNetworkApi.Models.Dtos.Topics;
 
@@ -20,7 +21,7 @@ namespace AlumniNetworkApi.Models.Dtos.AlumniUsers
         public string? FunFact { get; set; }
         public List<AlumniGroupInfoDto>? AlumniGroups { get; set; }
         public List<EventInfoDto>? Events { get; set; }
-        public List<string>? PostSenders { get; set; }
+        public List<PostInfoDto>? PostSenders { get; set; }
         public List<string>? PostTargetUserNavigations { get; set; }
         public List<RsvpInfoDto>? Rsvps { get; set; }
         public List<string>? EventsNavigation { get; set; }
